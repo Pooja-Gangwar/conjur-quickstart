@@ -1,0 +1,36 @@
+- !policy
+    id: conjur/authn-jwt/gitlab
+    body:
+    - !webservice
+
+    - !variable
+        id: jwks-uri
+
+    - !variable
+        id: token-app-property
+
+    - !variable
+        id: identity-path
+
+    - !variable
+        id: issuer
+
+    #Group of applications that can authenticate using this JWT Authenticator
+    - !group apps
+
+    - !permit
+        role: !group apps
+        privilege: [ read, authenticate ]
+        resource: !webservice
+
+    - !webservice
+        id: status
+
+    #Group of users who can check the status of the JWT Authenticator
+    - !group
+        id: operators
+
+    - !permit
+        role: !group operators
+        privilege: [ read ]
+        resource: !webservice status

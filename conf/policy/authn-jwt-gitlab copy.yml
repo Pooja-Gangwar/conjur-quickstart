@@ -18,35 +18,24 @@
     # however, token-app-property can be used without identity-path
 
     - !variable
-      id: token-app-property
+      id: token-app-property   ( namespace)
       annotations:
         description: JWT Authenticator bases authentication on claims from the JWT. You can base authentication on identifying clams such as the name, the user, and so on. If you can customize the JWT, you can create a custom claim and base authentication on this claim.
 
     - !variable
-      id: identity-path
+      id: identity-path  (project path) CyberArk/Authn Jwt Gitlab
       annotations:
         description: JWT Authenticator bases authentication on a combination of the claim in the token-app-property and the full path of the application identity (host) in Conjur. This variable is optional, and is used in conjunction with token-app-property. It has no purpose when standing alone.
 
     - !variable
-      id: issuer
+      id: issuer   ( hgitlab url )
       annotations:
         description: JWT Authenticator bases authentication on the JWT issuer. This variable is optional, and is relevant only if there is an iss claim in the JWT. The issuer variable and iss claim values must match.
 
-
     - !variable
-      id: username
+      id: ca-cert  (avoid)
       annotations:
-        description: JWT Authenticator bases authentication on claims from the JWT. You can base authentication on identifying clams such as the name, the user, and so on. If you can customize the JWT, you can create a custom claim and base authentication on this claim.
-
-    - !variable
-      id: password
-      annotations:
-        description: JWT Authenticator bases authentication on claims from the JWT. You can base authentication on identifying clams such as the name, the user, and so on. If you can customize the JWT, you can create a custom claim and base authentication on this claim.
-
-    # - !variable
-    #   id: ca-cert
-    #   annotations:
-    #     description: When the JWKS provider server uses a self-signed certificate or the certificate is signed by third-party CA, use this variable to establish a TLS connection and validate server identity.
+        description: When the JWKS provider server uses a self-signed certificate or the certificate is signed by third-party CA, use this variable to establish a TLS connection and validate server identity.
 
     # Mandatory: The JWT Provider URI: You must provide either a public-keys or jwks-uri
 
@@ -56,7 +45,7 @@
     #     description: The public certificate needed for validating the signed JSON Web Token if a web servie or JSON Web Key Set (JWKS) is not provided.
 
     - !variable
-      id: jwks-uri
+      id: jwks-uri  (-jw )
       annotations:
         description: A JSON Web Key Set (JWKS) URI. If the JWKS vendor provides both a jwks-uri and an equivalent provider-uri, you can use the provider-uri which has an easier interface to work with.
 
@@ -89,5 +78,3 @@
       role: !group operators
       privilege: read
       resource: !webservice status
-
-      # authn-jwt-gitlab , gitlab  final

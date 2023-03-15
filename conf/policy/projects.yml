@@ -1,101 +1,102 @@
 - !policy
-  id: gitlab
-  body:
-    - !policy
-      id: projects
-      annotations:
-        description: Projects that do not fall under a folder within Jenkins or project-specific host identities for authn-jwt/jenkins authentication.
-        jenkins: true
-      body:
+  id: gitlab
+  body:
+    - !policy
+      id: projects
+      annotations:
+        description: Projects that do not fall under a folder within gitlab or project-specific host identities for authn-jwt/gitlab authentication.
+        gitlab: true
+      body:
 
-        # Group of hosts that can authenticate using this JWT Authenticator
-        - !group
+        # Group of hosts that can authenticate using this JWT Authenticator
+        - !group
 
-        # `jenkins_name` is the primary identifying claim
-        - !host
-          id: Dev-Team-1
-          annotations:
-            jenkins: true
-            #authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
-            #authn-jwt/jenkins/jenkins_pronoun: Pipeline
-            authn-jwt/jenkins/identity: jenkins-server-Dev-Team-1
+        # `gitlab_name` is the primary identifying claim
+        - !host
+          id: Dev-Team-1
+          annotations:
+            gitlab: true
+            #authn-jwt/gitlab/gitlab_parent_name: Dev-Team-1
+            #authn-jwt/gitlab/gitlab_pronoun: Pipeline
+            authn-jwt/gitlab/identity: gitlab-server-Dev-Team-1
 
-        - !host
-          id: freestyle_job
-          annotations:
-            jenkins: true
-            #authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
-            #authn-jwt/jenkins/jenkins_pronoun: Project
-            authn-jwt/jenkins/identity: jenkins-server-freestyle_job
+        - !host
+          id: freestyle_job
+          annotations:
+            gitlab: true
+            #authn-jwt/gitlab/gitlab_parent_name: Dev-Team-1
+            #authn-jwt/gitlab/gitlab_pronoun: Project
+            authn-jwt/gitlab/identity: gitlab-server-freestyle_job
 
-        #individual jenkins job
-        - !host
-          id: Jenkins-new
-          annotations:
-            jenkins: true
-            #authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
-            authn-jwt/jenkins/jenkins_pronoun: Pipeline
-            authn-jwt/jenkins/identity: jenkins-server-Jenkins-new
+        #individual gitlab job
+        - !host
+          id: gitlab-new
+          annotations:
+            gitlab: true
+            #authn-jwt/gitlab/gitlab_parent_name: Dev-Team-1
+            authn-jwt/gitlab/gitlab_pronoun: Pipeline
+            authn-jwt/gitlab/identity: gitlab-server-gitlab-new
 
-        - !host
-          id: freestyle-job
-          annotations:
-            jenkins: true
-            authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
-            #authn-jwt/jenkins/jenkins_parent_full_name: Dev-Team-1
-            authn-jwt/jenkins/jenkins_pronoun: Project
-            authn-jwt/jenkins/identity: jenkins-server-freestyle-job
+        - !host
+          id: freestyle-job
+          annotations:
+            gitlab: true
+            authn-jwt/gitlab/gitlab_parent_name: Dev-Team-1
+            #authn-jwt/gitlab/gitlab_parent_full_name: Dev-Team-1
+            authn-jwt/gitlab/gitlab_pronoun: Project
+            authn-jwt/gitlab/identity: gitlab-server-freestyle-job
 
-        - !host
-          id: test-pipeline
-          annotations:
-            jenkins: true
-            authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
-            authn-jwt/jenkins/jenkins_pronoun: Pipeline
-            authn-jwt/jenkins/identity: jenkins-server-test-pipeline
-        - !host
-          id: child_folder
-          annotations:
-            jenkins: true
-            authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
-            #authn-jwt/jenkins/jenkins_pronoun: Pipeline
-            authn-jwt/jenkins/identity: jenkins-server-child_folder
-        - !host
-          id: child-folder-2
-          annotations:
-            jenkins: true
-            authn-jwt/jenkins/jenkins_parent_name: child_folder
-            #authn-jwt/jenkins/jenkins_pronoun: Pipeline
-            authn-jwt/jenkins/identity: jenkins-server-child-folder-2
-        - !host
-          id: child-folder-3
-          annotations:
-            jenkins: true
-            authn-jwt/jenkins/jenkins_parent_name: child-folder-2
-            #authn-jwt/jenkins/jenkins_pronoun: Pipeline
-            authn-jwt/jenkins/identity: jenkins-server-child-folder-3
-       
-        - !host
-          id: mbp
-          annotations:
-            jenkins: true
-            authn-jwt/jenkins/jenkins_parent_name: Dev-Team-1
-            #authn-jwt/jenkins/jenkins_pronoun: Pipeline
-            authn-jwt/jenkins/identity: jenkins-server-mbp
- 
-      # Grant all hosts in collection above to be members of projects group
-        - !grant
-          role: !group
-          members:
-            - !host Dev-Team-1
-            - !host test-pipeline
-            - !host freestyle-job
-            - !host child_folder
-            - !host child-folder-2
-            - !host child-folder-3
-            - !host mbp
-            - !host Jenkins-new
-            - !host freestyle_job
+        - !host
+          id: test-pipeline
+          annotations:
+            gitlab: true
+            authn-jwt/gitlab/gitlab_parent_name: Dev-Team-1
+            authn-jwt/gitlab/gitlab_pronoun: Pipeline
+            authn-jwt/gitlab/identity: gitlab-server-test-pipeline
+        - !host
+          id: child_folder
+          annotations:
+            gitlab: true
+            authn-jwt/gitlab/gitlab_parent_name: Dev-Team-1
+            #authn-jwt/gitlab/gitlab_pronoun: Pipeline
+            authn-jwt/gitlab/identity: gitlab-server-child_folder
+        - !host
+          id: child-folder-2
+          annotations:
+            gitlab: true
+            authn-jwt/gitlab/gitlab_parent_name: child_folder
+            #authn-jwt/gitlab/gitlab_pronoun: Pipeline
+            authn-jwt/gitlab/identity: gitlab-server-child-folder-2
+        - !host
+          id: child-folder-3
+          annotations:
+            gitlab: true
+            authn-jwt/gitlab/gitlab_parent_name: child-folder-2
+            #authn-jwt/gitlab/gitlab_pronoun: Pipeline
+            authn-jwt/gitlab/identity: gitlab-server-child-folder-3
+
+        - !host
+          id: mbp
+          annotations:
+            gitlab: true
+            authn-jwt/gitlab/gitlab_parent_name: Dev-Team-1
+            #authn-jwt/gitlab/gitlab_pronoun: Pipeline
+            authn-jwt/gitlab/identity: gitlab-server-mbp
+
+      # Grant all hosts in collection above to be members of projects group
+        - !grant
+          role: !group
+          members:
+            - !host Dev-Team-1
+            - !host test-pipeline
+            - !host freestyle-job
+            - !host child_folder
+            - !host child-folder-2
+            - !host child-folder-3
+            - !host mbp
+            - !host gitlab-new
+            - !host freestyle_job
 - !grant
-  role: !group conjur/authn-jwt/jenkins/consumers
-  member: !group jenkins/projects
+  role: !group conjur/authn-jwt/gitlab/consumers
+  member: !group gitlab/projects
+

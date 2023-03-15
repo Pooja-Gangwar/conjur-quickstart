@@ -1,0 +1,17 @@
+- !grant
+  role: !group conjur/authn-jwt/gitlab/consumers
+  member: !group ci/gitlab/root
+
+- !grant
+  role: !group SyncVault/LOB_CI/DemoSafe/delegation/consumers
+  members:
+    - !group ci/gitlab/root
+
+- !host
+  id: authn-jwt-gitlab
+  annotations:
+    description: Host identity for authn-jwt-gitlab project in root namespace within GitLab
+    authn-jwt/gitlab/namespace_path: root
+    authn-jwt/gitlab/namespace_id: 1
+    authn-jwt/gitlab/ref: main
+    authn-jwt/gitlab/project_path: root/authn-jwt-gitlab
