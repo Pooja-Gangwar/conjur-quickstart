@@ -1,0 +1,28 @@
+# conjur policy load ci gitlab.yml
+
+- !policy
+  id: gitlab
+  body:
+    # Create gitlab/admins group
+    - !group
+      id: admins
+      annotations:
+        description: Owner of gitlab branch policies
+        editable: "true"
+
+    # # Grant conjur-admins to be gitlab/admins
+    # - !grant
+    #   role: !group admins
+    #   members:
+    #     - !group /conjur-admins
+
+    # Create host/ci/gitlab/root host identity
+    - !host
+      id: root
+      annotations:
+        description: Global host identity for GitLab Controller
+
+      - !grant
+      role: !group SyncVault/LOB_CI/DemoSafe/delegation/consumers
+      members:
+        - !group ci/gitlab/root
