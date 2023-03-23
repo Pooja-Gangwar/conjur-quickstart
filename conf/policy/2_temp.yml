@@ -2,7 +2,7 @@
   id: gitlab
   body:
     - !policy
-      id: root
+      id: cyberark4
       annotations:
         description: Projects that do not fall under a folder within gitlab or project-specific host identities for authn-jwt/gitlab authentication.
         gitlab: true
@@ -17,9 +17,9 @@
             id: authn-jwt-gitlab
             annotations:
               description: Host identity for authn-jwt-gitlab project in root namespace within GitLab
-              authn-jwt/gitlab/namespace: root
+              authn-jwt/gitlab/namespace: cyberark4
               authn-jwt/gitlab/ref: main
-              authn-jwt/gitlab/project_path: root/authn-jwt-gitlab
+              authn-jwt/gitlab/project_path: cyberark4/authn-jwt-gitlab
 
         # Grant all hosts in collection above to be members of projects group
         - !grant
