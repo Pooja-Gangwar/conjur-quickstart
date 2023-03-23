@@ -12,6 +12,6 @@
 
     # Create host/ci/gitlab/root host identity
     - !host
-      id: root
+      id: cyberark4
       annotations:
         description: Global host identity for GitLab Controller
