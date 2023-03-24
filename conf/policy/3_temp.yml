@@ -5,7 +5,7 @@
   body:
     # Create gitlab/admins group
     - !group
-      id: admins
+      id: admin
       annotations:
         description: Owner of gitlab branch policies
         editable: "true"
