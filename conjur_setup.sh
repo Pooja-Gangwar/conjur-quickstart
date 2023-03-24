@@ -62,6 +62,6 @@ docker-compose exec -T client conjur policy load root policy/3.yml
 # docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/jwks-uri 'http://gitlab.example.com:9080/-/jwks/'
 
 docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/token-app-property 'cyberark4'
-docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/identity-path 'gitlab/cyberark4'
+docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/identity-path 'gitlab-apps'
 docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/issuer 'https://gitlab.com'
 docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/jwks-uri 'https://gitlab.com/-/jwks/'
