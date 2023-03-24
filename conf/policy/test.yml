@@ -19,3 +19,7 @@
     - !grant
         role: !group
         members: *hosts
+        
+   - !grant
+        role: !group authn-jwt/gitlab/apps
+        member: !group gitlab-apps
