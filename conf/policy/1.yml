@@ -78,3 +78,15 @@
       role: !group operators
       privilege: read
       resource: !webservice status
+      
+    - !group
+      id: admin
+      annotations:
+        description: Allows authentication through authn-jwt/gitlab web service.
+        editable: "true"
+
+    # Permit the consumers group to authenticate to the authn-jwt/gitlab web service
+    - !permit
+      role: !group admin
+      privilege: [ read, authenticate ]
+      resource: !webservice
