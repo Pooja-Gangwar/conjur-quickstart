@@ -15,3 +15,7 @@
       id: cyberark4
       annotations:
         description: Global host identity for GitLab Controller
+
+    - !grant
+      role: !group authn-jwt/gitlab/apps
+      member: !group gitlab-apps
