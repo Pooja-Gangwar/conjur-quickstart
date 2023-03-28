@@ -8,12 +8,12 @@
         # `gitlab_name` is the primary identifying claim
     - &hosts
       - !host
-        id: authn-jwt-gitlab
+        id: cyberark4
         annotations:
           description: Host identity for authn-jwt-gitlab project in root namespace within GitLab
             #authn-jwt/gitlab/namespace_id: 64382667
             # authn-jwt/gitlab/project_id: 43880730
-          authn-jwt/gitlab/namespace_path: cyberark4
+#           authn-jwt/gitlab/namespace_path: cyberark4
           authn-jwt/gitlab/ref: main
           authn-jwt/gitlab/project_path: cyberark4/authn-jwt-gitlab
           
