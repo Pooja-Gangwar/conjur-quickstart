@@ -22,3 +22,8 @@ docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab
       # docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/issuer 'gitlab.com'
 docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/issuer 'https://gitlab.com'
 docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/jwks-uri 'https://gitlab.com/-/jwks/'
+
+docker exec -it conjur_client conjur variable values add Dev-Team-credential1 "UserName_temp"
+docker exec -it conjur_client conjur variable values add Dev-Team-credential2 "Password_temp"
+docker exec -it conjur_client conjur variable values add Dev-Team-credential3 "UserName_temp"
+docker exec -it conjur_client conjur variable values add Dev-Team-credential4 "Password_temp"
