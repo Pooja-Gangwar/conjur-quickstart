@@ -12,9 +12,9 @@
 
 
 
-docker-compose exec -T client conjur policy load root policy/first.yml
-docker-compose exec -T client conjur policy load root policy/second.yml
-docker-compose exec -T client conjur policy load root policy/third.yml
+docker-compose exec -T client conjur policy load root policy/policy1.yml
+docker-compose exec -T client conjur policy load root policy/policy2.yml
+docker-compose exec -T client conjur policy load root policy/policy3.yml
 
 docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/token-app-property 'namespace_path'
 docker-compose exec -T client conjur variable values add conjur/authn-jwt/gitlab/token-app-property 'cyberark4'
